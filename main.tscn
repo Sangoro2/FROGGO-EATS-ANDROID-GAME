@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1kjh3fhh34aa"]
+
+[ext_resource type="Texture2D" uid="uid://0reskysp8yuf" path="res://gfx/BG/FONDO LAYER 1 BASE.png" id="2_jq030"]
+[ext_resource type="Texture2D" uid="uid://c0ksvrje0vi26" path="res://gfx/BG/BG TEST.png" id="2_m4vmu"]
+[ext_resource type="PackedScene" uid="uid://dajcrlcki4b5t" path="res://Scenes/Fly.tscn" id="3_wviqr"]
+[ext_resource type="PackedScene" uid="uid://g5twvwrnwq6o" path="res://Scenes/Player.tscn" id="4_mncgs"]
+[ext_resource type="PackedScene" uid="uid://cb63w7lwgqd1u" path="res://Scenes/JumpIndicatorPanel.tscn" id="5_250l1"]
+[ext_resource type="PackedScene" uid="uid://cfhiwfuvr2741" path="res://Scenes/JumpDirectionArrowButtons.tscn" id="6_kmkfm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3egg"]
+size = Vector2(344.75, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18ujt"]
+size = Vector2(344, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d88t7"]
+size = Vector2(6, 641)
+
+[node name="Main" type="Node2D"]
+
+[node name="BgTest" type="Sprite2D" parent="."]
+position = Vector2(174, 326.504)
+scale = Vector2(1.28205, 1.51035)
+texture = ExtResource("2_m4vmu")
+
+[node name="FondoLayer1Base" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(174, 499)
+scale = Vector2(3.17033, 3.17033)
+texture = ExtResource("2_jq030")
+
+[node name="Fly" parent="." instance=ExtResource("3_wviqr")]
+position = Vector2(272, 134)
+
+[node name="Player" parent="." instance=ExtResource("4_mncgs")]
+position = Vector2(156, 540)
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(-1, -35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(172.375, 590)
+shape = SubResource("RectangleShape2D_f3egg")
+
+[node name="ceiling" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling"]
+visible = false
+position = Vector2(172, 1)
+shape = SubResource("RectangleShape2D_18ujt")
+
+[node name="leftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftWall"]
+visible = false
+position = Vector2(-2, 320.5)
+shape = SubResource("RectangleShape2D_d88t7")
+
+[node name="rightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightWall"]
+visible = false
+position = Vector2(347, 321.5)
+shape = SubResource("RectangleShape2D_d88t7")
+
+[node name="JumpIndicatorPanel" parent="." instance=ExtResource("5_250l1")]
+offset_left = 77.0
+offset_top = 561.0
+offset_right = 279.0
+offset_bottom = 581.0
+
+[node name="Control" parent="." instance=ExtResource("6_kmkfm")]
+offset_left = 133.0
+offset_top = 587.0
+offset_right = 228.0
+offset_bottom = 640.0

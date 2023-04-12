@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfhiwfuvr2741"]
+
+[ext_resource type="Texture2D" uid="uid://cpg5nyeledmvh" path="res://gfx/UI/ARROW ANIMATED TEST.png" id="1_5odva"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3aem"]
+atlas = ExtResource("1_5odva")
+region = Rect2(49, 5, 9, 13)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="rightArrowBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 1.0
+offset_right = 74.0
+offset_bottom = 33.0
+rotation = 1.5708
+icon = SubResource("AtlasTexture_f3aem")
+
+[node name="rightArrowBtn2" type="Button" parent="."]
+offset_top = 17.0
+offset_right = 17.0
+offset_bottom = 38.0
+rotation = -1.5708
+icon = SubResource("AtlasTexture_f3aem")
