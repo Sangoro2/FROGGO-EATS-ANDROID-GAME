@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1kjh3fhh34aa"]
+[gd_scene load_steps=15 format=3 uid="uid://b1kjh3fhh34aa"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_rw4vb"]
 [ext_resource type="Texture2D" uid="uid://0reskysp8yuf" path="res://gfx/BG/FONDO LAYER 1 BASE.png" id="2_jq030"]
 [ext_resource type="Texture2D" uid="uid://c0ksvrje0vi26" path="res://gfx/BG/BG TEST.png" id="2_m4vmu"]
 [ext_resource type="PackedScene" uid="uid://dajcrlcki4b5t" path="res://Scenes/Fly.tscn" id="3_wviqr"]
 [ext_resource type="PackedScene" uid="uid://g5twvwrnwq6o" path="res://Scenes/Player.tscn" id="4_mncgs"]
 [ext_resource type="PackedScene" uid="uid://cb63w7lwgqd1u" path="res://Scenes/JumpIndicatorPanel.tscn" id="5_250l1"]
-[ext_resource type="PackedScene" uid="uid://cfhiwfuvr2741" path="res://Scenes/JumpDirectionArrowButtons.tscn" id="6_kmkfm"]
+[ext_resource type="Theme" uid="uid://b7df6ylcuju1f" path="res://Resources/main_screen_flat_button.tres" id="7_a83yp"]
+[ext_resource type="Texture2D" uid="uid://cpg5nyeledmvh" path="res://gfx/UI/ARROW ANIMATED TEST.png" id="7_u8h7x"]
+[ext_resource type="PackedScene" uid="uid://dl0yvp5e2njm3" path="res://Scenes/RedEyeFly.tscn" id="9_85157"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3egg"]
 size = Vector2(344.75, 11)
@@ -16,7 +19,16 @@ size = Vector2(344, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d88t7"]
 size = Vector2(6, 641)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta4jx"]
+atlas = ExtResource("7_u8h7x")
+region = Rect2(49, 5, 9, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8q0m"]
+atlas = ExtResource("7_u8h7x")
+region = Rect2(49, 5, 9, 13)
+
 [node name="Main" type="Node2D"]
+script = ExtResource("1_rw4vb")
 
 [node name="BgTest" type="Sprite2D" parent="."]
 position = Vector2(174, 326.504)
@@ -33,7 +45,7 @@ texture = ExtResource("2_jq030")
 position = Vector2(272, 134)
 
 [node name="Player" parent="." instance=ExtResource("4_mncgs")]
-position = Vector2(156, 540)
+position = Vector2(180, 534)
 
 [node name="floor" type="StaticBody2D" parent="."]
 position = Vector2(-1, -35)
@@ -69,8 +81,34 @@ offset_top = 561.0
 offset_right = 279.0
 offset_bottom = 581.0
 
-[node name="Control" parent="." instance=ExtResource("6_kmkfm")]
-offset_left = 133.0
-offset_top = 587.0
-offset_right = 228.0
-offset_bottom = 640.0
+[node name="rightArrowBtn" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.711
+offset_left = 250.0
+offset_top = 586.0
+offset_right = 299.0
+offset_bottom = 657.0
+grow_horizontal = 0
+rotation = 1.5708
+theme = ExtResource("7_a83yp")
+icon = SubResource("AtlasTexture_ta4jx")
+icon_alignment = 1
+
+[node name="leftArrowBtn" type="Button" parent="."]
+offset_left = 100.0
+offset_top = 635.0
+offset_right = 149.0
+offset_bottom = 706.0
+rotation = -1.5708
+theme = ExtResource("7_a83yp")
+icon = SubResource("AtlasTexture_j8q0m")
+icon_alignment = 1
+
+[node name="RedEyeFly" parent="." instance=ExtResource("9_85157")]
+position = Vector2(110, 171)
+
+[connection signal="jump_indicator_refreshed" from="JumpIndicatorPanel" to="." method="_on_jump_indicator_panel_jump_indicator_refreshed"]
+[connection signal="pressed" from="rightArrowBtn" to="." method="_on_right_arrow_btn_pressed"]
+[connection signal="pressed" from="leftArrowBtn" to="." method="_on_left_arrow_btn_pressed"]

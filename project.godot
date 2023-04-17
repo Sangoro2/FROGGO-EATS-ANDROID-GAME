@@ -17,11 +17,17 @@ config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=348
 window/handheld/orientation=1
 
 [dotnet]
 
 project/assembly_name="Froggo-eats-android-game"
+
+[editor]
+
+movie_writer/movie_file="D:/GodotProjects/FROGGO-EATS-ANDROID-GAME/clips/showcase.avi"
+movie_writer/fps=24
 
 [input]
 

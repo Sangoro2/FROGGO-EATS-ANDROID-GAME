@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl0yvp5e2njm3"]
+
+[ext_resource type="Texture2D" uid="uid://butqebhd2lbta" path="res://gfx/ENEMIES/FLY ENEMY2.png" id="1_c7m5c"]
+[ext_resource type="Script" path="res://Scripts/RedEyeFly.gd" id="1_ghmog"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wptry"]
+radius = 12.0
+height = 36.0
+
+[node name="RedEyeFly" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_ghmog")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -5)
+shape = SubResource("CapsuleShape2D_wptry")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c7m5c")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

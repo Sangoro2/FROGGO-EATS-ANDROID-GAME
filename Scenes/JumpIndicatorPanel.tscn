@@ -1,14 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb63w7lwgqd1u"]
+[gd_scene load_steps=3 format=3 uid="uid://cb63w7lwgqd1u"]
 
+[ext_resource type="Script" path="res://Scripts/JumpIndicatorPanel.gd" id="1_0ldck"]
 [ext_resource type="Theme" uid="uid://cf7tks5bfffvm" path="res://Resources/default_theme.tres" id="1_vyxag"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 205.0
+offset_bottom = 25.0
+script = ExtResource("1_0ldck")
 
 [node name="JumpIndicatorPanel" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 20.0
 theme = ExtResource("1_vyxag")
@@ -29,6 +32,7 @@ theme = ExtResource("1_vyxag")
 disabled = true
 
 [node name="JumpIndicatorPanel2" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 68.0
 offset_right = 132.0
 offset_bottom = 20.0
@@ -50,6 +54,7 @@ theme = ExtResource("1_vyxag")
 disabled = true
 
 [node name="JumpIndicatorPanel3" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 136.0
 offset_right = 200.0
 offset_bottom = 20.0
@@ -69,3 +74,9 @@ grow_vertical = 2
 focus_mode = 0
 theme = ExtResource("1_vyxag")
 disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="indicator_timer"]
